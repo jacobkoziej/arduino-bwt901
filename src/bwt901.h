@@ -16,8 +16,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef _BTW901_H
-#define _BTW901_H
+#ifndef _BWT901_H
+#define _BWT901_H
 
 
 /* registers addresses */
@@ -91,4 +91,4 @@
 #define Q3       0x54  // quaternion Q3
 
 
-#endif /* _BTW901_H */
+#endif /* _BWT901_H */
