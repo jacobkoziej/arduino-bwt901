@@ -19,6 +19,8 @@
 #ifndef _BWT901_H
 #define _BWT901_H
 
+#include <Arduino.h>
+
 
 /* registers addresses */
 #define SAVE     0x00  // save
