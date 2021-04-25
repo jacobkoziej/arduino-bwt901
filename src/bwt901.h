@@ -111,6 +111,7 @@ typedef struct bwt901_time_s {
 	unsigned int year        : 8;  // starts a 2000
 	unsigned int month       : 4;
 	unsigned int day         : 5;
+	unsigned int minute      : 6;
 	unsigned int hour        : 5;
 	unsigned int second      : 6;
 	unsigned int millisecond : 10;
