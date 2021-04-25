@@ -27,6 +27,7 @@
 
 #define ACCELERATION_SCALAR     ((16.0 * GRAVITY) / 32768.0)
 #define ANGULAR_VELOCITY_SCALAR (2000.0 / 32768.0)
+#define ANGLE_SCALAR            (180.0 / 32768.0)
 
 
 /* communication protocol */
@@ -177,6 +178,7 @@ typedef struct bwt901_s {
 uint8_t bwt901_time(bwt901_time_t *in, uint8_t *raw);
 uint8_t bwt901_acceleration(bwt901_acceleration_t *in, uint8_t *raw);
 uint8_t bwt901_angular_velocity(bwt901_angular_velocity_t *in, uint8_t *raw);
+uint8_t bwt901_angle(bwt901_angle_t *in, uint8_t *raw);
 
 
 #endif /* _BWT901_H */
