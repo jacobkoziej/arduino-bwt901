@@ -87,9 +87,9 @@
 #define AY       0x35  // y-axis acceleration
 #define AZ       0x36  // z-axis acceleration
 
-#define GX       0x37  // x-axis angular acceleration
-#define GY       0x38  // y-axis angular acceleration
-#define GZ       0x39  // z-axis angular acceleration
+#define GX       0x37  // x-axis angular velocity
+#define GY       0x38  // y-axis angular velocity
+#define GZ       0x39  // z-axis angular velocity
 
 #define HX       0x3A  // x-axis magnetic
 #define HY       0x3B  // y-axis magnetic
