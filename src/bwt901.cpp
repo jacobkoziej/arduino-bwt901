@@ -71,23 +71,12 @@ uint8_t bwt901_acceleration(bwt901_acceleration_t *in, uint8_t *raw)
 	if (!in)  return 0;
 	if (!raw) return 0;
 
-	int16_t x, y, z;
+	int16_t a[3];
+	bwt901_deserialize(a, 3, raw);
 
-	x   = raw[1];
-	x <<= 8;
-	x  |= raw[0];
-
-	y   = raw[3];
-	y <<= 8;
-	y  |= raw[2];
-
-	z   = raw[5];
-	z <<= 8;
-	z  |= raw[4];
-
-	in->x = x;
-	in->y = y;
-	in->z = z;
+	in->x = a[0];
+	in->y = a[1];
+	in->z = a[2];
 
 	in->x *= ACCELERATION_SCALAR;
 	in->y *= ACCELERATION_SCALAR;
@@ -115,23 +104,12 @@ uint8_t bwt901_angular_velocity(bwt901_angular_velocity_t *in, uint8_t *raw)
 	if (!in)  return 0;
 	if (!raw) return 0;
 
-	int16_t x, y, z;
+	int16_t a[3];
+	bwt901_deserialize(a, 3, raw);
 
-	x   = raw[1];
-	x <<= 8;
-	x  |= raw[0];
-
-	y   = raw[3];
-	y <<= 8;
-	y  |= raw[2];
-
-	z   = raw[5];
-	z <<= 8;
-	z  |= raw[4];
-
-	in->x = x;
-	in->y = y;
-	in->z = z;
+	in->x = a[0];
+	in->y = a[1];
+	in->z = a[2];
 
 	in->x *= ANGULAR_VELOCITY_SCALAR;
 	in->y *= ANGULAR_VELOCITY_SCALAR;
@@ -159,23 +137,12 @@ uint8_t bwt901_angle(bwt901_angle_t *in, uint8_t *raw)
 	if (!in)  return 0;
 	if (!raw) return 0;
 
-	int16_t x, y, z;
+	int16_t a[3];
+	bwt901_deserialize(a, 3, raw);
 
-	x   = raw[1];
-	x <<= 8;
-	x  |= raw[0];
-
-	y   = raw[3];
-	y <<= 8;
-	y  |= raw[2];
-
-	z   = raw[5];
-	z <<= 8;
-	z  |= raw[4];
-
-	in->x = x;
-	in->y = y;
-	in->z = z;
+	in->x = a[0];
+	in->y = a[1];
+	in->z = a[2];
 
 	in->x *= ANGLE_SCALAR;
 	in->y *= ANGLE_SCALAR;
@@ -203,23 +170,12 @@ uint8_t bwt901_magnetic(bwt901_magnetic_t *in, uint8_t *raw)
 	if (!in)  return 0;
 	if (!raw) return 0;
 
-	int16_t x, y, z;
+	int16_t m[3];
+	bwt901_deserialize(m, 3, raw);
 
-	x   = raw[1];
-	x <<= 8;
-	x  |= raw[0];
-
-	y   = raw[3];
-	y <<= 8;
-	y  |= raw[2];
-
-	z   = raw[5];
-	z <<= 8;
-	z  |= raw[4];
-
-	in->x = x;
-	in->y = y;
-	in->z = z;
+	in->x = m[0];
+	in->y = m[1];
+	in->z = m[2];
 
 	// NOTE: temperature is disregarded
 
@@ -243,21 +199,13 @@ uint8_t bwt901_port_status(bwt901_port_status_t *in, uint8_t *raw)
 	if (!in)  return 0;
 	if (!raw) return 0;
 
-	in->d0   = raw[1];
-	in->d0 <<= 8;
-	in->d0  |= raw[0];
+	int16_t d[4];
+	bwt901_deserialize(d, 4, raw);
 
-	in->d1   = raw[3];
-	in->d1 <<= 8;
-	in->d1  |= raw[2];
-
-	in->d2   = raw[5];
-	in->d2 <<= 8;
-	in->d2  |= raw[4];
-
-	in->d3   = raw[7];
-	in->d3 <<= 8;
-	in->d3  |= raw[6];
+	in->d0 = d[0];
+	in->d1 = d[1];
+	in->d2 = d[2];
+	in->d3 = d[3];
 
 	return 1;
 }
@@ -279,28 +227,13 @@ uint8_t bwt901_quaternion(bwt901_quaternion_t *in, uint8_t *raw)
 	if (!in)  return 0;
 	if (!raw) return 0;
 
-	int16_t q0, q1, q2, q3;
+	int16_t q[4];
+	bwt901_deserialize(q, 4, raw);
 
-	q0   = raw[1];
-	q0 <<= 8;
-	q0  |= raw[0];
-
-	q1   = raw[3];
-	q1 <<= 8;
-	q1  |= raw[2];
-
-	q2   = raw[5];
-	q2 <<= 8;
-	q2  |= raw[4];
-
-	q3   = raw[7];
-	q3 <<= 8;
-	q3  |= raw[6];
-
-	in->q0 = q0;
-	in->q1 = q1;
-	in->q2 = q2;
-	in->q3 = q3;
+	in->q0 = q[0];
+	in->q1 = q[1];
+	in->q2 = q[2];
+	in->q3 = q[3];
 
 	in->q0 /= SCALAR;
 	in->q1 /= SCALAR;
