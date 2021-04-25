@@ -166,4 +166,8 @@ typedef struct bwt901_s {
 } bwt901_t;
 
 
+/* prototypes */
+uint8_t bwt901_time(bwt901_time_t *in, uint8_t *raw);
+
+
 #endif /* _BWT901_H */

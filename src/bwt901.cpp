@@ -19,3 +19,37 @@
 #include "bwt901.h"
 
 #include <Arduino.h>
+
+
+uint8_t bwt901_time(bwt901_time_t *in, uint8_t *raw)
+{
+	/*
+	 * 0: YY
+	 * 1: MM
+	 * 2: DD
+	 * 3: HH
+	 * 4: MM
+	 * 5: SS
+	 * 6: MS (LOW)
+	 * 7: MS (HIGH)
+	 */
+
+	// safety checks
+	if (!in)  return 0;
+	if (!raw) return 0;
+
+	in->year   = raw[0] + 2000;  // year starts at 2000
+	in->month  = raw[1];
+	in->day    = raw[2];
+	in->hour   = raw[3];
+	in->minute = raw[4];
+	in->second = raw[5];
+
+	uint16_t millisecond;
+	millisecond       = raw[7];
+	millisecond     <<= 8;
+	millisecond      |= raw[6];
+	in->millisecond   = millisecond;
+
+	return 1;
+}
