@@ -302,10 +302,10 @@ uint8_t bwt901_quaternion(bwt901_quaternion_t *in, uint8_t *raw)
 	in->q2 = q2;
 	in->q3 = q3;
 
-	in->q0 /= 32768.0;
-	in->q1 /= 32768.0;
-	in->q2 /= 32768.0;
-	in->q3 /= 32768.0;
+	in->q0 /= SCALAR;
+	in->q1 /= SCALAR;
+	in->q2 /= SCALAR;
+	in->q3 /= SCALAR;
 
 	return 1;
 }

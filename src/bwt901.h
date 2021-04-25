@@ -24,10 +24,11 @@
 
 /* numerical constants */
 #define GRAVITY 9.80665  // m/s^2
+#define SCALAR  32768.0
 
-#define ACCELERATION_SCALAR     ((16.0 * GRAVITY) / 32768.0)
-#define ANGULAR_VELOCITY_SCALAR (2000.0 / 32768.0)
-#define ANGLE_SCALAR            (180.0 / 32768.0)
+#define ACCELERATION_SCALAR     ((16.0 * GRAVITY) / SCALAR)
+#define ANGULAR_VELOCITY_SCALAR (2000.0 / SCALAR)
+#define ANGLE_SCALAR            (180.0 / SCALAR)
 
 
 /* communication protocol */
