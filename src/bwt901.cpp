@@ -97,3 +97,47 @@ uint8_t bwt901_acceleration(bwt901_acceleration_t *in, uint8_t *raw)
 
 	return 1;
 }
+
+uint8_t bwt901_angular_velocity(bwt901_angular_velocity_t *in, uint8_t *raw)
+{
+	/*
+	 * 0: WX (LOW)
+	 * 1: WX (HIGH)
+	 * 2: WY (LOW)
+	 * 3: WY (HIGH)
+	 * 4: WZ (LOW)
+	 * 5: WZ (HIGH)
+	 * 6: V  (LOW)
+	 * 7: V  (HIGH)
+	 */
+
+	// safety checks
+	if (!in)  return 0;
+	if (!raw) return 0;
+
+	int16_t x, y, z;
+
+	x   = raw[1];
+	x <<= 8;
+	x  |= raw[0];
+
+	y   = raw[3];
+	y <<= 8;
+	y  |= raw[2];
+
+	z   = raw[5];
+	z <<= 8;
+	z  |= raw[4];
+
+	in->x = x;
+	in->y = y;
+	in->z = z;
+
+	in->x *= ANGULAR_VELOCITY_SCALAR;
+	in->y *= ANGULAR_VELOCITY_SCALAR;
+	in->z *= ANGULAR_VELOCITY_SCALAR;
+
+	// NOTE: temperature is disregarded
+
+	return 1;
+}
