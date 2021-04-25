@@ -22,6 +22,19 @@
 #include <Arduino.h>
 
 
+/* communication protocol */
+#define HEADER             0x55
+#define TIME               0x50
+#define ACCELERATION       0x51
+#define ANGULAR_VELOCITY   0x52
+#define ANGLE              0x53
+#define MAGNETIC           0x54
+#define PORT_STATUS        0x55
+#define QUATERNION         0x59
+
+#define PACKET_SIZ 11
+
+
 /* registers addresses */
 #define SAVE     0x00  // save
 #define CALSW    0x01  // calibration
