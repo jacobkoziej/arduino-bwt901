@@ -185,3 +185,43 @@ uint8_t bwt901_angle(bwt901_angle_t *in, uint8_t *raw)
 
 	return 1;
 }
+
+uint8_t bwt901_magnetic(bwt901_magnetic_t *in, uint8_t *raw)
+{
+	/*
+	 * 0: HX (LOW)
+	 * 1: HX (HIGH)
+	 * 2: HY (LOW)
+	 * 3: HY (HIGH)
+	 * 4: HZ (LOW)
+	 * 5: HZ (HIGH)
+	 * 6: V  (LOW)
+	 * 7: V  (HIGH)
+	 */
+
+	// safety checks
+	if (!in)  return 0;
+	if (!raw) return 0;
+
+	int16_t x, y, z;
+
+	x   = raw[1];
+	x <<= 8;
+	x  |= raw[0];
+
+	y   = raw[3];
+	y <<= 8;
+	y  |= raw[2];
+
+	z   = raw[5];
+	z <<= 8;
+	z  |= raw[4];
+
+	in->x = x;
+	in->y = y;
+	in->z = z;
+
+	// NOTE: temperature is disregarded
+
+	return 1;
+}
