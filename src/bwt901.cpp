@@ -53,3 +53,47 @@ uint8_t bwt901_time(bwt901_time_t *in, uint8_t *raw)
 
 	return 1;
 }
+
+uint8_t bwt901_acceleration(bwt901_acceleration_t *in, uint8_t *raw)
+{
+	/*
+	 * 0: AX (LOW)
+	 * 1: AX (HIGH)
+	 * 2: AY (LOW)
+	 * 3: AY (HIGH)
+	 * 4: AZ (LOW)
+	 * 5: AZ (HIGH)
+	 * 6: V  (LOW)
+	 * 7: V  (HIGH)
+	 */
+
+	// safety checks
+	if (!in)  return 0;
+	if (!raw) return 0;
+
+	int16_t x, y, z;
+
+	x   = raw[1];
+	x <<= 8;
+	x  |= raw[0];
+
+	y   = raw[3];
+	y <<= 8;
+	y  |= raw[2];
+
+	z   = raw[5];
+	z <<= 8;
+	z  |= raw[4];
+
+	in->x = x;
+	in->y = y;
+	in->z = z;
+
+	in->x *= ACCELERATION_SCALAR;
+	in->y *= ACCELERATION_SCALAR;
+	in->z *= ACCELERATION_SCALAR;
+
+	// NOTE: temperature is disregarded
+
+	return 1;
+}

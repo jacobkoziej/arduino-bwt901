@@ -22,6 +22,11 @@
 #include <Arduino.h>
 
 
+/* numerical constants */
+#define GRAVITY 9.80665  // m/s^2
+#define ACCELERATION_SCALAR ((16.0 * GRAVITY) / 32768.0)
+
+
 /* communication protocol */
 #define HEADER             0x55
 #define TIME               0x50
@@ -168,6 +173,7 @@ typedef struct bwt901_s {
 
 /* prototypes */
 uint8_t bwt901_time(bwt901_time_t *in, uint8_t *raw);
+uint8_t bwt901_acceleration(bwt901_acceleration_t *in, uint8_t *raw);
 
 
 #endif /* _BWT901_H */
