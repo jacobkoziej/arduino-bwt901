@@ -261,3 +261,51 @@ uint8_t bwt901_port_status(bwt901_port_status_t *in, uint8_t *raw)
 
 	return 1;
 }
+
+uint8_t bwt901_quaternion(bwt901_quaternion_t *in, uint8_t *raw)
+{
+	/*
+	 * 0: Q0 (LOW)
+	 * 1: Q0 (HIGH)
+	 * 2: Q1 (LOW)
+	 * 3: Q1 (HIGH)
+	 * 4: Q2 (LOW)
+	 * 5: Q2 (HIGH)
+	 * 6: Q3 (LOW)
+	 * 7: Q3 (HIGH)
+	 */
+
+	// safety checks
+	if (!in)  return 0;
+	if (!raw) return 0;
+
+	int16_t q0, q1, q2, q3;
+
+	q0   = raw[1];
+	q0 <<= 8;
+	q0  |= raw[0];
+
+	q1   = raw[3];
+	q1 <<= 8;
+	q1  |= raw[2];
+
+	q2   = raw[5];
+	q2 <<= 8;
+	q2  |= raw[4];
+
+	q3   = raw[7];
+	q3 <<= 8;
+	q3  |= raw[6];
+
+	in->q0 = q0;
+	in->q1 = q1;
+	in->q2 = q2;
+	in->q3 = q3;
+
+	in->q0 /= 32768.0;
+	in->q1 /= 32768.0;
+	in->q2 /= 32768.0;
+	in->q3 /= 32768.0;
+
+	return 1;
+}
