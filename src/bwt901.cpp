@@ -225,3 +225,39 @@ uint8_t bwt901_magnetic(bwt901_magnetic_t *in, uint8_t *raw)
 
 	return 1;
 }
+
+uint8_t bwt901_port_status(bwt901_port_status_t *in, uint8_t *raw)
+{
+	/*
+	 * 0: D0 (LOW)
+	 * 1: D0 (HIGH)
+	 * 2: D1 (LOW)
+	 * 3: D1 (HIGH)
+	 * 4: D2 (LOW)
+	 * 5: D2 (HIGH)
+	 * 6: D3 (LOW)
+	 * 7: D3 (HIGH)
+	 */
+
+	// safety checks
+	if (!in)  return 0;
+	if (!raw) return 0;
+
+	in->d0   = raw[1];
+	in->d0 <<= 8;
+	in->d0  |= raw[0];
+
+	in->d1   = raw[3];
+	in->d1 <<= 8;
+	in->d1  |= raw[2];
+
+	in->d2   = raw[5];
+	in->d2 <<= 8;
+	in->d2  |= raw[4];
+
+	in->d3   = raw[7];
+	in->d3 <<= 8;
+	in->d3  |= raw[6];
+
+	return 1;
+}

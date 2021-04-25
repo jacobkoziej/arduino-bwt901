@@ -180,6 +180,7 @@ uint8_t bwt901_acceleration(bwt901_acceleration_t *in, uint8_t *raw);
 uint8_t bwt901_angular_velocity(bwt901_angular_velocity_t *in, uint8_t *raw);
 uint8_t bwt901_angle(bwt901_angle_t *in, uint8_t *raw);
 uint8_t bwt901_magnetic(bwt901_magnetic_t *in, uint8_t *raw);
+uint8_t bwt901_port_status(bwt901_port_status_t *in, uint8_t *raw);
 
 
 #endif /* _BWT901_H */
