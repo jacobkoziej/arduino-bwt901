@@ -243,6 +243,17 @@ uint8_t bwt901_quaternion(bwt901_quaternion_t *in, uint8_t *raw)
 	return 1;
 }
 
+
+uint8_t bwt901_checksum(uint8_t *raw)
+{
+	if (!raw) return 0;
+
+	uint8_t checksum = 0;
+	for (uint8_t i = 0; i < PACKET_SIZ - 1; i++) checksum += raw[i];
+
+	return (checksum == raw[PACKET_SIZ - 1]);
+}
+
 uint8_t bwt901_deserialize(uint16_t *out, uint8_t cnt, uint8_t *raw)
 {
 	if (!out) return 0;

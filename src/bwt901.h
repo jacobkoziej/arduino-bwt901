@@ -184,6 +184,7 @@ uint8_t bwt901_magnetic(bwt901_magnetic_t *in, uint8_t *raw);
 uint8_t bwt901_port_status(bwt901_port_status_t *in, uint8_t *raw);
 uint8_t bwt901_quaternion(bwt901_quaternion_t *in, uint8_t *raw);
 
+uint8_t bwt901_checksum(uint8_t *raw);
 uint8_t bwt901_deserialize(uint16_t *out, uint8_t cnt, uint8_t *raw);
 
 
