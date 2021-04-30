@@ -19,6 +19,8 @@
 #ifndef _BWT901_H
 #define _BWT901_H
 
+#include "bwt901/types.h"
+
 #include <Arduino.h>
 
 
@@ -118,66 +120,6 @@
 #define BWT901_REGISTER_Q1       0x52  // quaternion Q1
 #define BWT901_REGISTER_Q2       0x53  // quaternion Q2
 #define BWT901_REGISTER_Q3       0x54  // quaternion Q3
-
-
-/* types */
-typedef struct bwt901_time_s {
-	unsigned int year        : 12;
-	unsigned int month       : 4;
-	unsigned int day         : 5;
-	unsigned int minute      : 6;
-	unsigned int hour        : 5;
-	unsigned int second      : 6;
-	unsigned int millisecond : 10;
-} bwt901_time_t;
-
-typedef struct bwt901_acceleration_s {
-	float x;
-	float y;
-	float z;
-} bwt901_acceleration_t;
-
-typedef struct bwt901_angular_velocity_s {
-	float x;
-	float y;
-	float z;
-} bwt901_angular_velocity_t;
-
-typedef struct bwt901_angle_s {
-	float x;  // roll
-	float y;  // pitch
-	float z;  // yaw
-} bwt901_angle_t;
-
-typedef struct bwt901_magnetic_s {
-	float x;
-	float y;
-	float z;
-} bwt901_magnetic_t;
-
-typedef struct bwt901_port_status_s {
-	int16_t d0;
-	int16_t d1;
-	int16_t d2;
-	int16_t d3;
-} bwt901_port_status_t;
-
-typedef struct bwt901_quaternion_s {
-	float q0;
-	float q1;
-	float q2;
-	float q3;
-} bwt901_quaternion_t;
-
-typedef struct bwt901_s {
-	bwt901_time_t             time;
-	bwt901_acceleration_t     acceleration;
-	bwt901_angular_velocity_t angular_velocity;
-	bwt901_angle_t            angle;
-	bwt901_magnetic_t         magnetic;
-	bwt901_port_status_t      port_status;
-	bwt901_quaternion_t       quaternion;
-} bwt901_t;
 
 
 /* prototypes */
