@@ -96,9 +96,9 @@ uint8_t bwt901_acceleration(bwt901_acceleration_t *in, uint8_t *raw)
 	in->y = a[1];
 	in->z = a[2];
 
-	in->x *= ACCELERATION_SCALAR;
-	in->y *= ACCELERATION_SCALAR;
-	in->z *= ACCELERATION_SCALAR;
+	in->x *= BWT901_CONSTANT_ACCELERATION_SCALAR;
+	in->y *= BWT901_CONSTANT_ACCELERATION_SCALAR;
+	in->z *= BWT901_CONSTANT_ACCELERATION_SCALAR;
 
 	// NOTE: temperature is disregarded
 
@@ -129,9 +129,9 @@ uint8_t bwt901_angular_velocity(bwt901_angular_velocity_t *in, uint8_t *raw)
 	in->y = a[1];
 	in->z = a[2];
 
-	in->x *= ANGULAR_VELOCITY_SCALAR;
-	in->y *= ANGULAR_VELOCITY_SCALAR;
-	in->z *= ANGULAR_VELOCITY_SCALAR;
+	in->x *= BWT901_CONSTANT_ANGULAR_VELOCITY_SCALAR;
+	in->y *= BWT901_CONSTANT_ANGULAR_VELOCITY_SCALAR;
+	in->z *= BWT901_CONSTANT_ANGULAR_VELOCITY_SCALAR;
 
 	// NOTE: temperature is disregarded
 
@@ -162,9 +162,9 @@ uint8_t bwt901_angle(bwt901_angle_t *in, uint8_t *raw)
 	in->y = a[1];
 	in->z = a[2];
 
-	in->x *= ANGLE_SCALAR;
-	in->y *= ANGLE_SCALAR;
-	in->z *= ANGLE_SCALAR;
+	in->x *= BWT901_CONSTANT_ANGLE_SCALAR;
+	in->y *= BWT901_CONSTANT_ANGLE_SCALAR;
+	in->z *= BWT901_CONSTANT_ANGLE_SCALAR;
 
 	// NOTE: version is disregarded
 
@@ -253,10 +253,10 @@ uint8_t bwt901_quaternion(bwt901_quaternion_t *in, uint8_t *raw)
 	in->q2 = q[2];
 	in->q3 = q[3];
 
-	in->q0 /= SCALAR;
-	in->q1 /= SCALAR;
-	in->q2 /= SCALAR;
-	in->q3 /= SCALAR;
+	in->q0 /= BWT901_CONSTANT_SCALAR;
+	in->q1 /= BWT901_CONSTANT_SCALAR;
+	in->q2 /= BWT901_CONSTANT_SCALAR;
+	in->q3 /= BWT901_CONSTANT_SCALAR;
 
 	return 1;
 }
@@ -267,9 +267,9 @@ uint8_t bwt901_checksum(uint8_t *raw)
 	if (!raw) return 0;
 
 	uint8_t checksum = 0;
-	for (uint8_t i = 0; i < PACKET_SIZ - 1; i++) checksum += raw[i];
+	for (uint8_t i = 0; i < BWT901_PACKET_SIZ - 1; i++) checksum += raw[i];
 
-	return (checksum == raw[PACKET_SIZ - 1]);
+	return (checksum == raw[BWT901_PACKET_SIZ - 1]);
 }
 
 uint8_t bwt901_deserialize(uint16_t *out, uint8_t cnt, uint8_t *raw)
