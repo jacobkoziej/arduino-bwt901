@@ -23,6 +23,9 @@
 #include <Wire.h>
 
 
+#define BWT901_DEFAULT_I2C_ADDR 0x50
+
+
 class BWT901_i2c {
 	private:
 		TwoWire &wire;

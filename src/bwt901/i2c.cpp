@@ -20,3 +20,10 @@
 
 #include <Arduino.h>
 #include <Wire.h>
+
+
+BWT901_i2c::BWT901_i2c(void)
+{
+	i2c_addr = BWT901_DEFAULT_I2C_ADDR;
+	wire     = Wire;
+}
