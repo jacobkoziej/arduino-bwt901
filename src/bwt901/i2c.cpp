@@ -22,6 +22,19 @@
 #include <Wire.h>
 
 
+void BWT901_i2c::request(uint8_t reg_addr, uint8_t *buff, uint8_t siz)
+{
+	wire->beginTransmission(i2c_addr);
+	wire->write(reg_addr);
+	wire->endTransmission(false);
+
+	wire->requestFrom(i2c_addr, siz);
+	while (wire->available() < siz);
+
+	for (uint8_t i = 0; i < siz; i++) buff[i] = wire->read();
+}
+
+
 BWT901_i2c::BWT901_i2c(void)
 {
 	i2c_addr = BWT901_DEFAULT_I2C_ADDR;

@@ -100,6 +100,8 @@ class BWT901_i2c {
 		TwoWire *wire;
 		uint8_t i2c_addr;
 
+		void request(uint8_t reg_addr, uint8_t *buff, uint8_t siz);
+
 	public:
 		BWT901_i2c(void);
 
