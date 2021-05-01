@@ -32,6 +32,10 @@ void BWT901_i2c::request(uint8_t reg_addr, uint8_t *buff, uint8_t siz)
 	while (wire->available() < siz);
 
 	for (uint8_t i = 0; i < siz; i++) buff[i] = wire->read();
+
+	// drop leftover data
+	wire->endTransmission();
+	while(wire->available()) wire->read();
 }
 
 
