@@ -97,13 +97,14 @@
 
 class BWT901_i2c {
 	private:
-		TwoWire &wire;
+		TwoWire *wire;
 		uint8_t i2c_addr;
 
 	public:
 		BWT901_i2c(void);
 
 		void address(uint8_t addr);
+		void i2c_bus(TwoWire *in);
 };
 
 
