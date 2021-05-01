@@ -65,3 +65,17 @@ void BWT901_i2c::i2c_bus(TwoWire *in)
 {
 	wire = in;
 }
+
+
+void BWT901_i2c::cfg_save(bool save)
+{
+	// 0: SAVE -- (0 == save), (1 == default)
+	// 1: PADDING
+
+	uint8_t tmp[2];
+
+	tmp[0] = !save;
+	tmp[1] = 0x00;
+
+	BWT901_i2c::write(BWT901_REGISTER_SAVE, tmp);
+}

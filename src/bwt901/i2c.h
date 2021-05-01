@@ -108,6 +108,8 @@ class BWT901_i2c {
 
 		void address(uint8_t addr);
 		void i2c_bus(TwoWire *in);
+
+		void cfg_save(bool save);
 };
 
 
