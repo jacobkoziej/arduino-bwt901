@@ -23,4 +23,14 @@
 #include <Wire.h>
 
 
+class BWT901_i2c {
+	private:
+		TwoWire &wire;
+		uint8_t i2c_addr;
+
+	public:
+		BWT901_i2c(void);
+};
+
+
 #endif /* _BWT901_I2C_H */
