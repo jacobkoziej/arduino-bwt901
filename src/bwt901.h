@@ -19,6 +19,7 @@
 #ifndef _BWT901_H
 #define _BWT901_H
 
+#include "bwt901/i2c.h"
 #include "bwt901/types.h"
 
 #include <Arduino.h>
