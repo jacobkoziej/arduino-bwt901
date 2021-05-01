@@ -27,3 +27,9 @@ BWT901_i2c::BWT901_i2c(void)
 	i2c_addr = BWT901_DEFAULT_I2C_ADDR;
 	wire     = Wire;
 }
+
+
+void BWT901_i2c::address(uint8_t addr)
+{
+	i2c_addr = addr;
+}

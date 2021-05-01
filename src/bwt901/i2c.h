@@ -102,6 +102,8 @@ class BWT901_i2c {
 
 	public:
 		BWT901_i2c(void);
+
+		void address(uint8_t addr);
 };
 
 
