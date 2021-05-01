@@ -41,6 +41,8 @@ void BWT901_i2c::request(uint8_t reg_addr, uint8_t *buff, uint8_t siz)
 void BWT901_i2c::write(uint8_t reg_addr, uint8_t data[2])
 {
 	wire->beginTransmission(i2c_addr);
+	wire->write(0xFF);
+	wire->write(0xAA);
 	wire->write(reg_addr);
 	wire->write(data, 2);
 	wire->endTransmission();
