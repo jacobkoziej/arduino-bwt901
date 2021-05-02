@@ -22,23 +22,6 @@
 #include <Wire.h>
 
 
-uint8_t bwt901_request(uint8_t *buff, uint8_t addr)
-{
-	if (!buff) return 0;
-
-	Wire.beginTransmission(0x50);
-	Wire.write(addr);
-	Wire.endTransmission(false);
-
-	Wire.requestFrom(0x50, 8);
-	while (Wire.available() < 8);
-
-	for (uint8_t i = 0; i < 8; i++) buff[i] = Wire.read();
-
-	return 1;
-}
-
-
 uint8_t bwt901_time(bwt901_time_t *in, uint8_t *raw)
 {
 	/*

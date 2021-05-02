@@ -53,8 +53,6 @@
 
 
 /* prototypes */
-uint8_t bwt901_request(uint8_t *buff, uint8_t addr);
-
 uint8_t bwt901_time(bwt901_time_t *in, uint8_t *raw);
 uint8_t bwt901_acceleration(bwt901_acceleration_t *in, uint8_t *raw);
 uint8_t bwt901_angular_velocity(bwt901_angular_velocity_t *in, uint8_t *raw);
