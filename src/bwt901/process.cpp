@@ -16,6 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include "constants.h"
 #include "process.h"
 
 #include <Arduino.h>
@@ -29,6 +30,17 @@ inline int16_t BWT901_process::deserialize(uint8_t in[2])
 	tmp   = in[0];
 	tmp <<= 8;
 	tmp  |= in[1];
+
+	return tmp;
+}
+
+
+inline float BWT901_process::angle(int16_t in)
+{
+	float tmp;
+
+	tmp  = in;
+	tmp *= BWT901_CONSTANT_ANGLE_SCALAR;
 
 	return tmp;
 }
