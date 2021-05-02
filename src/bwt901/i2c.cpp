@@ -22,6 +22,16 @@
 #include <Wire.h>
 
 
+/*
+ * PACKET FORMAT
+ * *************
+ * 0: 0xFF
+ * 1: 0xAA
+ * 2: REGISTER
+ * 3: DATA LOW
+ * 4: DATA HIGH
+ */
+
 void BWT901_i2c::request(uint8_t reg_addr, uint8_t *buff, uint8_t siz)
 {
 	wire->beginTransmission(i2c_addr);
