@@ -79,3 +79,29 @@ void BWT901_i2c::cfg_save(bool save)
 
 	write(BWT901_REGISTER_SAVE, tmp);
 }
+
+void BWT901_i2c::cfg_frequency(float hz)
+{
+	// 0: FREQUENCY
+	// 1: PADDING
+
+	uint8_t tmp[2];
+
+	if      (hz < 0.000) tmp[0] = 0x0C;  // single
+	else if (hz < 0.100) tmp[0] = 0x0D;  // no output
+	else if (hz < 0.350) tmp[0] = 0x01;  // 0.200Hz
+	else if (hz < 0.750) tmp[0] = 0x02;  // 0.500Hz
+	else if (hz < 1.500) tmp[0] = 0x03;  // 1.000Hz
+	else if (hz < 3.500) tmp[0] = 0x04;  // 2.000Hz
+	else if (hz < 7.500) tmp[0] = 0x05;  // 5.000Hz
+	else if (hz < 15.00) tmp[0] = 0x06;  // 10.00Hz (default)
+	else if (hz < 35.00) tmp[0] = 0x07;  // 20.00Hz
+	else if (hz < 75.00) tmp[0] = 0x08;  // 50.00Hz
+	else if (hz < 112.5) tmp[0] = 0x09;  // 100.0Hz
+	else if (hz < 162.5) tmp[0] = 0x0A;  // 125.0Hz
+	else                 tmp[0] = 0x0B;  // 200.0Hz
+
+	tmp[1] = 0x00;
+
+	write(BWT901_REGISTER_SAVE, tmp);
+}

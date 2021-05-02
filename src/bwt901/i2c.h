@@ -110,6 +110,7 @@ class BWT901_i2c {
 		void i2c_bus(TwoWire *in);
 
 		void cfg_save(bool save);
+		void cfg_frequency(float hz);
 };
 
 
