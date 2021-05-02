@@ -77,5 +77,5 @@ void BWT901_i2c::cfg_save(bool save)
 	tmp[0] = !save;
 	tmp[1] = 0x00;
 
-	BWT901_i2c::write(BWT901_REGISTER_SAVE, tmp);
+	write(BWT901_REGISTER_SAVE, tmp);
 }
