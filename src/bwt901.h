@@ -19,24 +19,11 @@
 #ifndef _BWT901_H
 #define _BWT901_H
 
+#include "bwt901/constants.h"
 #include "bwt901/i2c.h"
 #include "bwt901/types.h"
 
 #include <Arduino.h>
-
-
-/* numerical constants */
-#define BWT901_CONSTANT_GRAVITY 9.80665  // m/s^2
-#define BWT901_CONSTANT_SCALAR  32768.0
-
-#define BWT901_CONSTANT_ACCELERATION_SCALAR     \
-	((16.0  * BWT901_CONSTANT_GRAVITY) / BWT901_CONSTANT_SCALAR)
-
-#define BWT901_CONSTANT_ANGULAR_VELOCITY_SCALAR \
-	(2000.0 / BWT901_CONSTANT_SCALAR)
-
-#define BWT901_CONSTANT_ANGLE_SCALAR            \
-	(180.0  / BWT901_CONSTANT_SCALAR)
 
 
 /* communication protocol */
