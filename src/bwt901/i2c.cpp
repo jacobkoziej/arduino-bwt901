@@ -103,5 +103,5 @@ void BWT901_i2c::cfg_frequency(float hz)
 
 	tmp[1] = 0x00;
 
-	write(BWT901_REGISTER_SAVE, tmp);
+	write(BWT901_REGISTER_RATE, tmp);
 }
