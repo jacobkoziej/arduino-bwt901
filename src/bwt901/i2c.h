@@ -87,7 +87,7 @@
 #define BWT901_REGISTER_D0STATUS 0x41  // D0 status
 #define BWT901_REGISTER_D1STATUS 0x42  // D1 status
 #define BWT901_REGISTER_D2STATUS 0x43  // D2 status
-#define BWT901_REGISTER_D1STATUS 0x44  // D3 status
+#define BWT901_REGISTER_D3STATUS 0x44  // D3 status
 
 #define BWT901_REGISTER_Q0       0x51  // quaternion Q0
 #define BWT901_REGISTER_Q1       0x52  // quaternion Q1
