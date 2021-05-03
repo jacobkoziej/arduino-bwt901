@@ -22,7 +22,7 @@
 #include <Arduino.h>
 
 
-inline int16_t BWT901_process::deserialize(uint8_t in[2])
+int16_t BWT901_process::deserialize(uint8_t in[2])
 {
 	int16_t tmp;
 
@@ -35,7 +35,7 @@ inline int16_t BWT901_process::deserialize(uint8_t in[2])
 }
 
 
-inline float BWT901_process::angle(int16_t in)
+float BWT901_process::angle(int16_t in)
 {
 	float tmp;
 

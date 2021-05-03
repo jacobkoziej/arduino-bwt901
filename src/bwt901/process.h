@@ -24,9 +24,9 @@
 
 class BWT901_process {
 	public:
-		inline int16_t deserialize(uint8_t in[2]);
+		int16_t deserialize(uint8_t in[2]);
 
-		inline float angle(int16_t in);
+		float angle(int16_t in);
 };
 
 
