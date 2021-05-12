@@ -117,6 +117,7 @@ class BWT901_i2c {
 		void cfg_frequency(float hz);
 
 		float angle_x(void);
+		float angle_y(void);
 };
 
 
