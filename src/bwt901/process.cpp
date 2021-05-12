@@ -27,9 +27,9 @@ int16_t BWT901_process::deserialize(uint8_t in[2])
 	int16_t tmp;
 
 	// low byte is always first
-	tmp   = in[0];
+	tmp   = in[1];
 	tmp <<= 8;
-	tmp  |= in[1];
+	tmp  |= in[0];
 
 	return tmp;
 }
