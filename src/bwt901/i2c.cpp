@@ -17,6 +17,7 @@
  */
 
 #include "i2c.h"
+#include "process.h"
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -116,4 +117,14 @@ void BWT901_i2c::cfg_frequency(float hz)
 	tmp[1] = 0x00;
 
 	write(BWT901_REGISTER_RATE, tmp);
+}
+
+
+float BWT901_i2c::angle_x(void)
+{
+	uint8_t buff[2];
+
+	request(BWT901_REGISTER_ROLL, buff, sizeof(buff));
+
+	return process.angle(process.deserialize(buff));
 }

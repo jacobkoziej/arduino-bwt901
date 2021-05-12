@@ -19,6 +19,8 @@
 #ifndef _BWT901_I2C_H
 #define _BWT901_I2C_H
 
+#include "process.h"
+
 #include <Arduino.h>
 #include <Wire.h>
 
@@ -100,6 +102,8 @@ class BWT901_i2c {
 		TwoWire *wire;
 		uint8_t i2c_addr;
 
+		BWT901_process process;
+
 		void request(uint8_t reg_addr, uint8_t *buff, uint8_t siz);
 		void write(uint8_t reg_addr, uint8_t data[2]);
 
@@ -111,6 +115,8 @@ class BWT901_i2c {
 
 		void cfg_save(bool save);
 		void cfg_frequency(float hz);
+
+		float angle_x(void);
 };
 
 
