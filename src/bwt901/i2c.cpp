@@ -137,3 +137,12 @@ float BWT901_i2c::angle_y(void)
 
 	return process.angle(process.deserialize(buff));
 }
+
+float BWT901_i2c::angle_z(void)
+{
+	uint8_t buff[2];
+
+	request(BWT901_REGISTER_YAW, buff, sizeof(buff));
+
+	return process.angle(process.deserialize(buff));
+}

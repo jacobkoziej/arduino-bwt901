@@ -118,6 +118,7 @@ class BWT901_i2c {
 
 		float angle_x(void);
 		float angle_y(void);
+		float angle_z(void);
 };
 
 
